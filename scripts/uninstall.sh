@@ -32,7 +32,8 @@ if [ -f "$PLUGIN" ]; then
     echo "Plugin removed: $PLUGIN"
 fi
 
-# Clean up session files
-rm -rf ~/.claude/sessions/
-echo "Session files cleaned up."
+# Clean up status files written by hook.sh. Leave the rest of ~/.claude/sessions/
+# alone: Claude Code keeps its own per-session files there.
+rm -f ~/.claude/sessions/*.status
+echo "Status files cleaned up."
 echo "Remember to remove the keybinding from ~/.config/zellij/config.kdl"
